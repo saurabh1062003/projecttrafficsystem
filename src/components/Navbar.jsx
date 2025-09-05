@@ -99,11 +99,11 @@ export default function Navbar() {
       </div>
 
       {/* User Profile / Avatar */}
-      <div style={{ marginLeft: "20px" }}>
+      <div style={{ marginLeft: "20px"}}>
         <img
-          src="https://i.pravatar.cc/32"
+          src="https://us.123rf.com/450wm/chatcameraman/chatcameraman1806/chatcameraman180600014/103005042-ic%C3%B4ne-de-signe-de-policier-symbole-vectoriel.jpg?ver=6"
           alt="user"
-          style={{ borderRadius: "50%" }}
+          style={{ borderRadius: "50%" , width:'30px' }}
         />
       </div>
     </div>

@@ -26,6 +26,20 @@ function genReports(n = 12) {
   }));
 }
 
+// Utility: download report as CSV
+function downloadReport(report) {
+  const csvContent = `ID,Name,Type,Generated On,Downloads,Status\n${report.id},${report.name},${report.type},${report.generatedOn},${report.downloads},${report.status}`;
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", `${report.name}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 export default function Reports() {
   const [reports, setReports] = useState(genReports());
   const [reportType, setReportType] = useState("Daily");
@@ -96,11 +110,12 @@ export default function Reports() {
                     style={{
                       padding: "5px 10px",
                       backgroundColor: "#3b82f6",
-                      color: "#d04040ff",
+                      color: "#fff",
                       borderRadius: "6px",
                       cursor: "pointer",
                       border: "none",
                     }}
+                    onClick={() => downloadReport(r)}
                   >
                     Download
                   </button>
@@ -128,7 +143,7 @@ export default function Reports() {
             style={{
               padding: "8px 16px",
               backgroundColor: "#10de99ff",
-              color: "#f62424ff",
+              color: "#fff",
               borderRadius: "6px",
               cursor: "pointer",
               border: "none",
